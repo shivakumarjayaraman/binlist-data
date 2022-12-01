@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from flask import Flask
+from flask import Flask, abort
 import csv
 import re 
 
@@ -21,7 +21,7 @@ def lookup(card) :
     card = re.sub("\s", "", card)
     card = card[0:6]
     if (card in csvdata) : return csvdata[card]
-    return "Not found"
+    abort(404)
     
 
 if __name__ == '__main__' :
